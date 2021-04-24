@@ -1,3 +1,17 @@
+function submit_form (){
+  $.ajax({
+      url:'https://api.apispreadsheets.com/data/11347/',
+      type:'post',
+      data:$("#contactForm").serializeArray(),
+      success: function(){
+        alert("Email Sent sucessfully! I will get back to you soon.")
+      },
+      error: function(){
+        alert("There was an error :(")
+      }
+  });
+}
+
 (function($) {
   "use strict";
   
