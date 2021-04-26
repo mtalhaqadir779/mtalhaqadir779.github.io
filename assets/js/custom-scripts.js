@@ -1,13 +1,16 @@
 function submit_form (){
+  $("#form-submit").attr("disabled", true);
   $.ajax({
       url:'https://api.apispreadsheets.com/data/11347/',
       type:'post',
       data:$("#contactForm").serializeArray(),
       success: function(){
-        alert("Email Sent sucessfully! I will get back to you soon.")
+        alert("Email Sent sucessfully! I will get back to you soon.");
+        $("#form-submit").attr("disabled", false);
       },
       error: function(){
-        alert("There was an error :(")
+        alert("There was an error :(");
+        $("#form-submit").attr("disabled", false);
       }
   });
 }
