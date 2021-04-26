@@ -1,20 +1,3 @@
-function submit_form (){
-  $("#form-submit").attr("disabled", true);
-  $.ajax({
-      url:'https://api.apispreadsheets.com/data/11347/',
-      type:'post',
-      data:$("#contactForm").serializeArray(),
-      success: function(){
-        alert("Email Sent sucessfully! I will get back to you soon.");
-        $("#form-submit").attr("disabled", false);
-      },
-      error: function(){
-        alert("There was an error :(");
-        $("#form-submit").attr("disabled", false);
-      }
-  });
-}
-
 (function($) {
   "use strict";
   
@@ -321,26 +304,7 @@ function submit_form (){
           }
         }
     });
-    
-    
-    // Smooth Scroll
-        // $(function() {
-        //   $('a[href*=#]:not([href=#])').click(function() {
-        //     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-        //       var target = $(this.hash);
-        //       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        //       if (target.length) {
-        //         $('html,body').animate({
-        //           scrollTop: target.offset().top
-        //         }, 600);
-        //         return false;
-        //       }
-        //     }
-        //   });
-        // });
-        
-        
-        
+         
     /*
     |=================
     | CONTACT FORM
@@ -348,53 +312,43 @@ function submit_form (){
     */
         
       $("#contactForm").validator().on("submit", function (event) {
-          if (event.isDefaultPrevented()) {
-            // handle the invalid form...
-            formError();
-            submitMSG(false, "Did you fill in the form properly?");
-          } else {
-            // everything looks good!
-            event.preventDefault();
-            submitForm();
-          }
-       });
-    
-        function submitForm(){
-          var name = $("#name").val();
-          var email = $("#email").val();
-          var message = $("#message").val();
-          $.ajax({
-              type: "POST",
-              url: "process.php",
-              data: "name=" + name + "&email=" + email + "&message=" + message,
-              success : function(text){
-                  if (text == "success"){
-                      formSuccess();
-                    } else {
-                      formError();
-                      submitMSG(false,text);
-                    }
-                }
-            });
-        }
-        function formSuccess(){
-            $("#contactForm")[0].reset();
-            submitMSG(true, "Message Sent!")
-        }
-    	  function formError(){   
-    	    $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-    	        $(this).removeClass();
-    	    });
-    	  }
-        function submitMSG(valid, msg){
-          if(valid){
-            var msgClasses = "h3 text-center fadeInUp animated text-success";
-          } else {
-            var msgClasses = "h3 text-center shake animated text-danger";
-          }
-          $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
-        }
-    
+    if (event.isDefaultPrevented()) {
+      // handle the invalid form...
+      submitMSG(false, "Did you fill in the form properly?");
+    } else {
+      // everything looks good!
+      event.preventDefault();
+      submitForm();
+    }
+  });
 
+  function submitForm() {
+    $("#form-submit").attr("disabled", true);
+    $.ajax({
+      url: 'https://api.apispreadsheets.com/data/11347/',
+      type: 'post',
+      data: $("#contactForm").serializeArray(),
+      success: function () {
+        submitMSG(true, "Email Sent sucessfully! I will get back to you soon.")
+        $("#form-submit").attr("disabled", false);
+        $("#contactForm")[0].reset();
+      },
+      error: function () {
+        alert("There was an error :(");
+        $("#form-submit").attr("disabled", false);
+        $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+          $(this).removeClass();
+        });
+      }
+    });
+  }
+  function submitMSG(valid, msg) {
+    if (valid) {
+      var msgClasses = "h3 text-center fadeInUp animated text-success";
+    } else {
+      var msgClasses = "h3 text-center shake animated text-danger";
+    }
+    $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
+  }
     
 }(jQuery));
