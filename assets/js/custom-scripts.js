@@ -1,9 +1,8 @@
 $.getJSON("https://api.ipify.org?format=json",
   function (data) {
     document.getElementById("public_ip").value = data.ip;
-  })
-
-  (function ($) {
+  });
+(function ($) {
     "use strict";
 
     $.fn.andSelf = function () {
