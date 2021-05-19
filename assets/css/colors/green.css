@@ -124,6 +124,18 @@
   background-color: #4CAF50; }
 
 .mh-pricing .mh-pricing .fa {
-  color: #4CAF50; }
+  color: #4CAF50; 
+}
+
+#btn-back-to-top {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+#lab-link {
+  color: #fff;
+  text-decoration: none;
+  background-color: #4CAF50;
+}
 
 /*# sourceMappingURL=green.css.map */
