@@ -25,8 +25,8 @@ function scrollFunction() {
 mybutton.addEventListener("click", backToTop);
 
 function backToTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  var body = $("html, body");
+  body.stop().animate({scrollTop:0}, 300, 'swing');
 }
 
 (function ($) {
