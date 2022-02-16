@@ -1,8 +1,3 @@
-$.getJSON("https://api.ipify.org?format=json",
-  function (data) {
-    document.getElementById("public_ip").value = data.ip;
-  });
-
 //Get the button
 let mybutton = document.getElementById("btn-back-to-top");
 
@@ -347,14 +342,14 @@ function backToTop() {
     if (event.isDefaultPrevented()) {
       // handle the invalid form...
       submitMSG(false, "Did you fill in the form properly?");
-    } else {
+    } /*else {
       // everything looks good!
       event.preventDefault();
       submitForm();
-    }
+    }*/
   });
 
-  function submitForm() {
+ /* function submitForm() {
 
     $("#form-submit").attr("disabled", true);
     $.ajax({
@@ -374,7 +369,7 @@ function backToTop() {
         });
       }
     });
-  }
+  }*/
   function submitMSG(valid, msg) {
     if (valid) {
       var msgClasses = "h3 text-center fadeInUp animated text-success";
