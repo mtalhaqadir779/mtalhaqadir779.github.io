@@ -906,22 +906,23 @@
                             </div>
                             <div class="col-sm-12 col-md-6 wow fadeInUp " data-wow-duration="0.8s"
                                 data-wow-delay="0.2s">
-                                <form id="contactForm" class="single-form quate-form wow fadeInUp"
+                                <form action="https://mailthis.to/contact@mtqadir.me"
+                                    method="POST" encType="multipart/form-data" class="single-form quate-form wow fadeInUp"
                                     data-toggle="validator">
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <input name="full_name" class="contact-name form-control" id="name"
+                                            <input name="name" class="contact-name form-control" id="name"
                                                 type="text" placeholder="Full Name" required>
                                         </div>
 
                                         <div class="col-sm-12">
-                                            <input name="email" class="contact-subject form-control" id="email"
+                                            <input name="_replyto" class="contact-subject form-control" id="email"
                                                 type="email" placeholder="Your Email" required>
                                         </div>
 
                                         <div class="col-sm-12">
-                                            <input name="subject" class="contact-email form-control" id="subject"
+                                            <input name="_subject" class="contact-email form-control" id="subject"
                                                 type="text" placeholder="Subject" required>
                                         </div>
 
@@ -929,14 +930,13 @@
                                             <textarea name="message" class="contact-message" id="message" rows="4"
                                                 placeholder="Your Message" required></textarea>
                                         </div>
-
-                                        <div class="col-sm-12">
-                                            <input name="public_ip" id="public_ip" type="hidden" required>
-                                        </div>
+                                        <input type="hidden" name="_after" value="https://myhomepage.net/">
+                                        <input type="hidden" name="_honeypot" value="">
+                                        <input type="hidden" name="_confirmation" value="">
 
                                         <!-- Subject Button -->
                                         <div class="btn-form col-sm-12">
-                                            <button type="submit" onclick="submit_form()" class="btn btn-fill btn-block"
+                                            <button type="submit" alue="Send" class="btn btn-fill btn-block"
                                                 id="form-submit">Send
                                                 Message</button>
                                         </div>
